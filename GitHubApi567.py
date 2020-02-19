@@ -13,7 +13,6 @@ def repository_get(user):
     for repository in repositories:
         number_of_commits = commit_get(user, repository['name'])
         summary.append((repository['name'], number_of_commits))
-    print(summary)
     return summary
 def commit_get(user, repository):
     response = requests.get('https://api.github.com/repos/' + user + '/' + repository +'/commits')
@@ -24,7 +23,7 @@ def commit_get(user, repository):
 
 def main():
     for repository, number_of_commits in repository_get('richkempinski'):
-        print(f"Repo: {repository} Number of commits: {number_of_commits}")
+        print("Repo: " + repository + " Number of commits: " + str(number_of_commits))
 
 
 
